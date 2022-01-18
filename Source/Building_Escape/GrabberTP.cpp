@@ -23,12 +23,12 @@ void UGrabberTP::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Reach = 100.f;
+	Reach = 500.f;
 
 	PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
-	if (!PhysicsHandle)
+	if (ensure(PhysicsHandle))
 	{
-		UE_LOG(LogTemp, Error, TEXT("%s: No PhysicsHandle component found"), *GetOwner()->GetName());
+		UE_LOG(LogTemp, Error, TEXT("%s: PhysicsHandle component found"), *GetOwner()->GetName());
 	}
 	// ...
 	
@@ -63,8 +63,8 @@ void UGrabberTP::Grab()
 		StartV,
 		EndV,
 		FColor::Red,
-		true,
-		0.f,
+		false,
+		2.f,
 		0,
 		5
 	);
