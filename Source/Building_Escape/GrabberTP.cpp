@@ -23,7 +23,7 @@ void UGrabberTP::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Reach = 500.f;
+	//Reach = 500.f;
 
 	PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
 	if (ensure(PhysicsHandle))
@@ -105,12 +105,25 @@ void UGrabberTP::Release()
 
 FVector UGrabberTP::GetStartVector()
 {
-	return GetOwner()->GetActorLocation();
+	//return GetOwner()->GetActorLocation();
+
+	FVector PlayerViewPointLocation;
+	FRotator PlayerViewPointRotation;
+
+	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(OUT PlayerViewPointLocation, OUT PlayerViewPointRotation);
+	return PlayerViewPointLocation;
 }
 
 FVector UGrabberTP::GetEndVector()
 {
-	return (GetOwner()->GetActorForwardVector() * Reach) + GetOwner()->GetActorLocation();
+	//return (GetOwner()->GetActorForwardVector() * Reach) + GetOwner()->GetActorLocation();
+
+	FVector PlayerViewPointLocation;
+	FRotator PlayerViewPointRotation;
+
+	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(OUT PlayerViewPointLocation, OUT PlayerViewPointRotation);
+
+	return PlayerViewPointLocation + PlayerViewPointRotation.Vector() * Reach;
 }
 
 
