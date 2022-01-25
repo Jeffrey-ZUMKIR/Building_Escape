@@ -31,9 +31,9 @@ void UActorPosition::TickComponent(float DeltaTime, ELevelTick TickType, FActorC
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	if (GEngine != nullptr) {
-		GEngine->AddOnScreenDebugMessage(0, 2, FColor::Green, *GetName());
+		//GEngine->AddOnScreenDebugMessage(0, 2, FColor::Green, *GetName());
 
-		GEngine->AddOnScreenDebugMessage(1, 2, FColor::Green, *GetLocation().ToString());
+		//GEngine->AddOnScreenDebugMessage(1, 2, FColor::Green, *GetLocation().ToString());
 	}
 
 	//UE_LOG(LogTemp, Warning, TEXT("Name: %s, Position: %s"), *GetName(), *GetLocation().ToString());

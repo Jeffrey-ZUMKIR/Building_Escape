@@ -45,6 +45,9 @@ private:
 		ATriggerVolume* Trigger = nullptr;
 
 	UPROPERTY(EditAnywhere)
+		float MinMass;
+
+	UPROPERTY(EditAnywhere)
 		float MaxMass;
 };
 

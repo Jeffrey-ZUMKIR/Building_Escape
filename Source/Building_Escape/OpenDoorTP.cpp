@@ -31,11 +31,26 @@ void UOpenDoorTP::TickComponent(float DeltaTime, ELevelTick TickType, FActorComp
 
 	if (ensure(Trigger)) {
 		float TotMass = GetTotMass();
-		//UE_LOG(LogTemp, Warning, TEXT("%f / %f"), TotMass, MaxMass);
-		if (TotMass >= MaxMass) {
-			OpenDoor();
+		//UE_LOG(LogTemp, Warning, TEXT("%f / %f"), TotMass, MinMass);
+		if (TotMass >= MinMass) {
+			if (MaxMass != 0) {
+				if (TotMass <= MaxMass) {
+					//UE_LOG(LogTemp, Warning, TEXT("Ouvert 1"));
+					OpenDoor();
+				}
+				else {
+					//UE_LOG(LogTemp, Warning, TEXT("Fermé 1"));
+					CloseDoor();
+				}
+			}
+			else {
+				//UE_LOG(LogTemp, Warning, TEXT("Ouvert 2"));
+				OpenDoor();
+			}
+			//OpenDoor();
 		}
 		else {
+			//UE_LOG(LogTemp, Warning, TEXT("Fermé 2"));
 			CloseDoor();
 		}
 	}

@@ -58,7 +58,7 @@ void UGrabberTP::Grab()
 
 	FCollisionQueryParams TraceParams(FName(TEXT("")), false, GetOwner());
 
-	DrawDebugLine(
+	/*DrawDebugLine(
 		GetWorld(),
 		StartV,
 		EndV,
@@ -67,7 +67,7 @@ void UGrabberTP::Grab()
 		2.f,
 		0,
 		5
-	);
+	);*/
 
 	GetWorld()->LineTraceSingleByObjectType(
 		Hit,
